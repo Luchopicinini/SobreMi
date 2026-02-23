@@ -10,6 +10,10 @@
 /* =========================
    BASE
 ========================= */
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #0f172a;
@@ -17,8 +21,8 @@ body {
     line-height: 1.6;
 }
 
-html {
-    scroll-behavior: smooth;
+section {
+    border-bottom: 1px solid #1e293b;
 }
 
 .container {
@@ -28,41 +32,36 @@ html {
     padding: 100px 0;
 }
 
-section {
-    border-bottom: 1px solid #1e293b;
-}
-
 /* =========================
    NAVBAR
 ========================= */
 header {
     position: fixed;
-    width: 100%;
     top: 0;
-    left: 0;
-    background-color: rgba(15, 23, 42, 0.95);
+    width: 100%;
+    background: rgba(15, 23, 42, 0.9);
     backdrop-filter: blur(10px);
     z-index: 1000;
     transition: 0.3s ease;
 }
 
 header.scrolled {
-    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
 }
 
 .navbar {
-    width: 90%;
     max-width: 1100px;
+    width: 90%;
     margin: auto;
+    padding: 20px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0;
 }
 
 .nav-logo {
-    font-weight: bold;
     font-size: 1.3rem;
+    font-weight: 700;
     color: #38bdf8;
 }
 
@@ -73,15 +72,30 @@ header.scrolled {
 }
 
 .nav-links a {
-    text-decoration: none;
     color: #e2e8f0;
+    text-decoration: none;
     font-weight: 500;
-    transition: 0.3s ease;
     position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background-color: #38bdf8;
+    transition: width 0.3s ease;
 }
 
 .nav-links a:hover {
     color: #38bdf8;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
 }
 
 /* =========================
@@ -89,21 +103,16 @@ header.scrolled {
 ========================= */
 #hero {
     min-height: 100vh;
+    padding-top: 120px;
     display: flex;
     align-items: center;
     background: linear-gradient(135deg, #0f172a, #1e293b);
-    padding-top: 120px;
 }
 
 .hero-content {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 60px;
-}
-
-.hero-text {
-    flex: 1;
 }
 
 .hero-text h1 {
@@ -123,21 +132,15 @@ header.scrolled {
     color: #94a3b8;
 }
 
-.hero-image {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-}
-
 .hero-image img {
     width: 300px;
     border-radius: 16px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-    transition: 0.3s ease;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    transition: transform 0.4s ease;
 }
 
 .hero-image img:hover {
-    transform: scale(1.05);
+    transform: scale(1.06);
 }
 
 /* =========================
@@ -146,11 +149,11 @@ header.scrolled {
 .btn {
     display: inline-block;
     padding: 12px 30px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
     background-color: #38bdf8;
     color: #0f172a;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
     transition: 0.3s ease;
 }
 
@@ -160,9 +163,9 @@ header.scrolled {
 }
 
 .btn.secondary {
-    background-color: transparent;
-    color: #38bdf8;
+    background: transparent;
     border: 1px solid #38bdf8;
+    color: #38bdf8;
 }
 
 .btn.secondary:hover {
@@ -171,7 +174,7 @@ header.scrolled {
 }
 
 /* =========================
-   TITULOS
+   TÍTULOS
 ========================= */
 h2 {
     font-size: 2rem;
@@ -180,35 +183,8 @@ h2 {
 }
 
 /* =========================
-   TECNOLOGÍAS
+   TECNOLOGÍAS (ACCORDION)
 ========================= */
-#tech ul {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-#tech li {
-    background-color: #1e293b;
-    padding: 10px 20px;
-    border-radius: 8px;
-    transition: 0.3s ease;
-}
-
-#tech li:hover {
-    background-color: #334155;
-    transform: translateY(-3px);
-}
-
-/* =========================
-   TECNOLOGÍAS DESPLEGABLES
-========================= */
-
-/* =========================
-   TECNOLOGÍAS DESPLEGABLES
-========================= */
-
 .tech-list {
     max-width: 800px;
     margin: auto;
@@ -217,29 +193,33 @@ h2 {
 .tech-item {
     background-color: #1e293b;
     margin-bottom: 15px;
-    border-radius: 8px;
-    overflow: hidden;
+    border-radius: 10px;
     cursor: pointer;
-    transition: 0.3s ease;
+    overflow: hidden;
+    transition: background 0.3s ease;
+}
+
+.tech-item:hover {
+    background-color: #334155;
 }
 
 .tech-title {
-    padding: 18px 20px;
-    font-weight: bold;
+    padding: 18px 22px;
+    font-weight: 700;
     color: #38bdf8;
 }
 
 .tech-content {
     max-height: 0;
     overflow: hidden;
-    padding: 0 20px;
+    padding: 0 22px;
     color: #94a3b8;
     transition: max-height 0.4s ease, padding 0.3s ease;
 }
 
 .tech-item.active .tech-content {
-    max-height: 300px;
-    padding: 15px 20px;
+    max-height: 250px;
+    padding: 15px 22px 20px;
 }
 
 /* =========================
@@ -249,18 +229,17 @@ h2 {
     background-color: #1e293b;
     padding: 30px;
     border-radius: 12px;
-    margin-top: 20px;
     transition: 0.3s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
     background-color: #334155;
+    transform: translateY(-6px);
 }
 
 .project-card h3 {
-    margin-bottom: 10px;
     color: #38bdf8;
+    margin-bottom: 10px;
 }
 
 /* =========================
@@ -274,8 +253,8 @@ h2 {
     margin-top: 30px;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 /* =========================
@@ -284,7 +263,7 @@ h2 {
 .fade-in {
     opacity: 0;
     transform: translateY(40px);
-    transition: all 0.8s ease;
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .fade-in.show {
@@ -296,24 +275,21 @@ h2 {
    RESPONSIVE
 ========================= */
 @media (max-width: 992px) {
-
     .hero-content {
         flex-direction: column;
         text-align: center;
     }
 
-    .hero-image img {
-        width: 240px;
-        margin-top: 30px;
-    }
-
     .hero-text p {
         margin: 0 auto 30px;
+    }
+
+    .hero-image img {
+        width: 240px;
     }
 }
 
 @media (max-width: 768px) {
-
     .navbar {
         flex-direction: column;
         gap: 15px;
@@ -321,10 +297,6 @@ h2 {
 
     .nav-links {
         gap: 20px;
-    }
-
-    .container {
-        padding: 80px 0;
     }
 
     h1 {
@@ -335,12 +307,7 @@ h2 {
         font-size: 1.6rem;
     }
 
-    #tech ul {
-        justify-content: center;
-    }
-
-    .perfil-links {
-        flex-direction: column;
-        align-items: center;
+    .container {
+        padding: 80px 0;
     }
 }
