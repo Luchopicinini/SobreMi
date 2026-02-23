@@ -311,3 +311,30 @@ h2 {
         padding: 80px 0;
     }
 }
+
+/* =========================
+   CONTACTO SIMPLE
+========================= */
+
+.contact-simple {
+    text-align: center;
+}
+
+.contact-simple p {
+    color: #94a3b8;
+    margin-bottom: 20px;
+}
+
+.contact-mail {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #38bdf8;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: 0.3s ease;
+}
+
+.contact-mail:hover {
+    border-bottom: 2px solid #38bdf8;
+    color: #0ea5e9;
+}
